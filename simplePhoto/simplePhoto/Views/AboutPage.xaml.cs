@@ -9,6 +9,8 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.FormsBook.Toolkit;
 using Xamarin.Forms.Xaml;
+using SkiaSharp.Views.Forms;
+using SkiaSharp;
 
 namespace simplePhoto.Views
 {
@@ -37,7 +39,18 @@ namespace simplePhoto.Views
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await result.OpenReadAsync();
+                        var stream2 = await result.OpenReadAsync();
                         MainImage.Source = ImageSource.FromStream(() => stream);
+                        SKBitmap skb = new SKBitmap();
+                        skb = SKBitmap.Decode(stream2);
+                        byte[] data = skb.Bytes;
+                        string str = "";
+                        foreach (var item in data)
+                        {
+                            str += item + ", ";
+                        }
+                        Label label = new Label { Text = str };
+                        layout.Children.Add(label);
                         FileName.Text = Text;
                     }
                     else
