@@ -1,9 +1,13 @@
 ﻿using System;
 using System.ComponentModel;
 using System.IO;
+using System.Drawing;
+using System.Data;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Xamarin.FormsBook.Toolkit;
 using Xamarin.Forms.Xaml;
 
 namespace simplePhoto.Views
@@ -14,6 +18,8 @@ namespace simplePhoto.Views
         {
             InitializeComponent();
         }
+
+        Image globalImage;
 
         /// <summary>
         /// When a user presses the button, they are prompted to upload an image.
@@ -33,7 +39,8 @@ namespace simplePhoto.Views
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await result.OpenReadAsync();
-                        MainImage.Source = ImageSource.FromStream(() => stream);
+                        globalImage = new Image { Source = ImageSource.FromStream(() => stream) };
+                        layout.Children.Add(globalImage);
                         FileName.Text = Text;
                     }
                     else
@@ -47,5 +54,8 @@ namespace simplePhoto.Views
                 Console.WriteLine(ex.Message);
             }
         }
+
+
+        
     }
 }
