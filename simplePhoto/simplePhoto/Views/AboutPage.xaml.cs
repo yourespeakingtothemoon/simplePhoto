@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +15,14 @@ namespace simplePhoto.Views
             InitializeComponent();
         }
 
+        Image globalImage;
+
+        /// <summary>
+        /// When a user presses the button, they are prompted to upload an image.
+        /// Afterwards the image is displayd on the page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         async private void uploadButtonClicked(object sender, EventArgs e)
         {
             try
@@ -25,8 +35,13 @@ namespace simplePhoto.Views
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await result.OpenReadAsync();
-                        var image = new Image { Source = ImageSource.FromStream(() => stream)};
-                        layout.Children.Add(image);
+                        globalImage = new Image { Source = ImageSource.FromStream(() => stream) };
+                        layout.Children.Add(globalImage);
+                        FileName.Text = Text;
+                    }
+                    else
+                    {
+                        FileName.Text = "Incorrect file type. Please enter a .png or .jpg file.";
                     }
                 }
             }
