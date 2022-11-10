@@ -13,7 +13,7 @@ namespace simplePhoto.Views
             InitializeComponent();
         }
 
-        async private void Button_Clicked(object sender, EventArgs e)
+        async private void uploadButtonClicked(object sender, EventArgs e)
         {
             try
             {
@@ -25,13 +25,14 @@ namespace simplePhoto.Views
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await result.OpenReadAsync();
-                        var image = ImageSource.FromStream(() => stream);
+                        var image = new Image { Source = ImageSource.FromStream(() => stream)};
+                        layout.Children.Add(image);
                     }
                 }
             }
             catch (Exception ex)
-            { 
-                
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
