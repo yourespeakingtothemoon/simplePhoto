@@ -15,8 +15,6 @@ namespace simplePhoto.Views
             InitializeComponent();
         }
 
-        Image globalImage;
-
         /// <summary>
         /// When a user presses the button, they are prompted to upload an image.
         /// Afterwards the image is displayd on the page.
@@ -35,8 +33,7 @@ namespace simplePhoto.Views
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
                         var stream = await result.OpenReadAsync();
-                        globalImage = new Image { Source = ImageSource.FromStream(() => stream) };
-                        layout.Children.Add(globalImage);
+                        MainImage.Source = ImageSource.FromStream(() => stream);
                         FileName.Text = Text;
                     }
                     else

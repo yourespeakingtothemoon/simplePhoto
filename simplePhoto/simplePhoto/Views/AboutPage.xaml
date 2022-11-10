@@ -44,6 +44,7 @@
                         Clicked="uploadButtonClicked"
                         BackgroundColor="{StaticResource Primary}"
                         TextColor="White" />
+                <Image x:Name="MainImage" />
             </StackLayout>
         </ScrollView>
     </Grid>
