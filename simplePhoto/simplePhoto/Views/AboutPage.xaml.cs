@@ -40,7 +40,7 @@ namespace simplePhoto.Views
                     {
                         var stream = await result.OpenReadAsync();
                         var stream2 = await result.OpenReadAsync();
-                        MainImage.Source = ImageSource.FromStream(() => stream);
+                       // MainImage.Source = ImageSource.FromStream(() => stream);
                         SKBitmap skb = new SKBitmap();
                         skb = SKBitmap.Decode(stream2);
                         /*byte[] data = skb.Bytes;
