@@ -53,18 +53,18 @@ namespace simplePhoto.Views
                         layout.Children.Add(label);*/
                         FileName.Text = Text;
                         Random random = new Random();
+                        Color filter = new Color(29,231, 55, 0);
                         for (int x = 0; x < skb.Width; x++)
                         {
                             for (int y = 0; y < skb.Height; y++)
-                            {
-                                int hueAdd = random.Next(0, 50);
-                                int satAdd = random.Next(0, 50);
-                                int valAdd = random.Next(0, 50);
+                            { 
 
                                 SKColor pixelColor = skb.GetPixel(x, y);
-                                SKColor newColor = new SKColor();
-                                newColor = SKColor.FromHsv(pixelColor.Hue+hueAdd, satAdd,pixelColor.Alpha+valAdd);
-                                skb.SetPixel(x, y, newColor);
+                                //SKColor newColor = new SKColor();
+                                Color newColor = Color.SKColorToColor(pixelColor);
+                                Color.Subtract(ref newColor, ref filter);
+                                Color.toByte(ref newColor);
+                                skb.SetPixel(x,y,Color.ColorToSKColor(newColor));
                                 //Console.WriteLine("Pixel Done!");
 
                             }
@@ -165,6 +165,13 @@ namespace simplePhoto.Views
             color.g += color2.g;
             color.b += color2.b;
             color.a += color2.a;
+        }
+        public static void Subtract(ref Color color, ref Color color2)
+        {
+            color.r -= color2.r;
+            color.g -= color2.g;
+            color.b -= color2.b;
+            color.a -= color2.a;
         }
 
         public static void SetColor(ref Color color, int r, int g, int b, int a)
