@@ -38,19 +38,9 @@ namespace simplePhoto.Views
                     if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
                     {
-                        var stream = await result.OpenReadAsync();
                         var stream2 = await result.OpenReadAsync();
-                        MainImage.Source = ImageSource.FromStream(() => stream);
                         SKBitmap skb = new SKBitmap();
                         skb = SKBitmap.Decode(stream2);
-                        /*byte[] data = skb.Bytes;
-                        string str = "";
-                        foreach (var p in pixels)
-                        {
-                            str += p.tostr() + "\n";
-                        }
-                        Label label = new Label { Text = str };
-                        layout.Children.Add(label);*/
                         FileName.Text = Text;
                         Random random = new Random();
                         Color filter = new Color(29,231, 55, 0);
@@ -60,9 +50,12 @@ namespace simplePhoto.Views
                             { 
 
                                 SKColor pixelColor = skb.GetPixel(x, y);
-                                //SKColor newColor = new SKColor();
                                 Color newColor = Color.SKColorToColor(pixelColor);
-                                Color.Subtract(ref newColor, ref filter);
+                                if (newColor.value() > 200)
+                                {
+                                    Color.Add(ref newColor.r, -50);
+                                    Color.Add(ref newColor.g, -50);
+                                }
                                 Color.toByte(ref newColor);
                                 skb.SetPixel(x,y,Color.ColorToSKColor(newColor));
                                 //Console.WriteLine("Pixel Done!");
@@ -119,7 +112,25 @@ namespace simplePhoto.Views
         }
 
         /// <summary>
-        /// Convert 
+        /// get the value of a pixel with alpha
+        /// </summary>
+        /// <returns>A float that represents the overall value of the pixel</returns>
+        public float valueA()
+        {
+            return (r + g + b + a) / 4.0f;
+        }
+
+        /// <summary>
+        /// get the value of a pixel without alpha
+        /// </summary>
+        /// <returns>A float that represents the overall value of the pixel</returns>
+        public float value()
+        {
+            return (r + g + b) / 3.0f;
+        }
+
+        /// <summary>
+        /// Convert an SKColor to a Color
         /// </summary>
         /// <param name="color"></param>
         /// <returns></returns>
@@ -159,27 +170,27 @@ namespace simplePhoto.Views
             color += i;
         }
 
-        public static void Add(ref Color color, ref Color color2)
+        public void Add(ref Color color)
         {
-            color.r += color2.r;
-            color.g += color2.g;
-            color.b += color2.b;
-            color.a += color2.a;
+            r += color.r;
+            g += color.g;
+            b += color.b;
+            a += color.a;
         }
-        public static void Subtract(ref Color color, ref Color color2)
+        public void Subtract(ref Color color)
         {
-            color.r -= color2.r;
-            color.g -= color2.g;
-            color.b -= color2.b;
-            color.a -= color2.a;
+            r -= color.r;
+            g -= color.g;
+            b -= color.b;
+            a -= color.a;
         }
 
-        public static void SetColor(ref Color color, int r, int g, int b, int a)
+        public void SetColor(int r, int g, int b, int a)
         {
-            color.r = r;
-            color.g = g;
-            color.b = b;
-            color.a = a;
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
         }
     }
 }
