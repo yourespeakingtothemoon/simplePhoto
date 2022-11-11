@@ -11,6 +11,7 @@ using Xamarin.FormsBook.Toolkit;
 using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
 using SkiaSharp;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace simplePhoto.Views
 {
@@ -20,6 +21,10 @@ namespace simplePhoto.Views
         {
             InitializeComponent();
         }
+
+        string gFilePath = "";
+        string gFileName = "";
+        Stream gStream = new MemoryStream();
 
         /// <summary>
         /// When a user presses the button, they are prompted to upload an image.
@@ -31,17 +36,20 @@ namespace simplePhoto.Views
         {
             try
             {
-                var result = await FilePicker.PickAsync();
+                var result = await FilePicker.PickAsync(); // have the user input a file
                 if (result != null)
                 {
-                    string Text = $"File name: {result.FileName}";
+                    gFileName = result.FileName;
                     if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
-                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase))
+                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase)) // make sure that the file is a valid type
                     {
-                        var stream2 = await result.OpenReadAsync();
+                        var stream2 = await result.OpenReadAsync(); // read the file as a stream
                         SKBitmap skb = new SKBitmap();
-                        skb = SKBitmap.Decode(stream2);
-                        FileName.Text = Text;
+                        skb = SKBitmap.Decode(stream2); // turn the stream into a SkiaSharp bitmap
+                        gFilePath = result.FullPath.Remove(result.FullPath.Length - result.FileName.Length);
+                        FileName.Text = gFileName; // display the file name 
+
+                        // *To be removed in final version* //
                         Random random = new Random();
                         Color filter = new Color(29,231, 55, 0);
                         for (int x = 0; x < skb.Width; x++)
@@ -53,8 +61,8 @@ namespace simplePhoto.Views
                                 Color newColor = Color.SKColorToColor(pixelColor);
                                 if (newColor.value() > 200)
                                 {
-                                    Color.Add(ref newColor.r, -50);
-                                    Color.Add(ref newColor.g, -50);
+                                    newColor.r -= 50;
+                                    newColor.g -= 50;
                                 }
                                 Color.toByte(ref newColor);
                                 skb.SetPixel(x,y,Color.ColorToSKColor(newColor));
@@ -65,6 +73,7 @@ namespace simplePhoto.Views
                         SKData skd = skb.Encode(SKEncodedImageFormat.Png,100);
                         Stream stream3 = new MemoryStream();
                         stream3 = skd.AsStream();
+                        gStream = skd.AsStream();
                         MainImage.Source = ImageSource.FromStream(() => stream3);
                         /*byte[] data2 = skb.Bytes;
                         string str2 = "";
@@ -76,6 +85,7 @@ namespace simplePhoto.Views
                         layout.Children.Add(label2);*/
 
                         //MainImage.ScaleTo(100.5);
+                        // *To be removed in final version* //
 
                     }
                     else
@@ -88,7 +98,24 @@ namespace simplePhoto.Views
             {
                 Console.WriteLine(ex.Message);
             }
-        }  
+        }
+
+        private void SaveImage_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                
+                /*string path = Path.Combine(gFilePath, gFileName + ".png");
+                using (FileStream outputFileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
+                {
+                    gStream.CopyTo(outputFileStream);
+                }*/
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
     }
 
     public class Color
@@ -165,6 +192,7 @@ namespace simplePhoto.Views
             color.a = (color.a < 0) ? 0 : color.a;
         }
 
+        // i dont think that this is even needed because the values are all public anyways 
         public static void Add (ref int color, int i)
         {
             color += i;
