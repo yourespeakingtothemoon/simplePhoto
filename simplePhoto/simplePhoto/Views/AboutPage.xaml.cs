@@ -15,6 +15,12 @@ using System.Runtime.InteropServices.ComTypes;
 
 namespace simplePhoto.Views
 {
+
+    public interface ISave
+    { 
+        void Save(byte[] bytes);
+    }
+
     public partial class AboutPage : ContentPage
     {
         public AboutPage()
@@ -25,6 +31,13 @@ namespace simplePhoto.Views
         string gFilePath = "";
         string gFileName = "";
         Stream gStream = new MemoryStream();
+        byte[] bytes;
+        public static ISave save { get; private set; }
+
+        public static void Init(ISave saver)
+        {
+            AboutPage.save = saver;
+        }
 
         /// <summary>
         /// When a user presses the button, they are prompted to upload an image.
@@ -48,7 +61,7 @@ namespace simplePhoto.Views
                         skb = SKBitmap.Decode(stream2); // turn the stream into a SkiaSharp bitmap
                         gFilePath = result.FullPath.Remove(result.FullPath.Length - result.FileName.Length);
                         FileName.Text = gFileName; // display the file name 
-
+                        bytes = skb.Bytes;
                         // *To be removed in final version* //
                         Random random = new Random();
                         Color filter = new Color(29,231, 55, 0);
@@ -104,12 +117,7 @@ namespace simplePhoto.Views
         {
             try
             {
-                
-                /*string path = Path.Combine(gFilePath, gFileName + ".png");
-                using (FileStream outputFileStream = new FileStream(path, FileMode.Create, FileAccess.ReadWrite))
-                {
-                    gStream.CopyTo(outputFileStream);
-                }*/
+                save.Save(bytes);
             }
             catch (Exception ex)
             {
