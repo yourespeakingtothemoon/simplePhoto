@@ -12,7 +12,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <StackLayout>
-        <StackLayout>
         <Frame BackgroundColor="{StaticResource Main}" Padding="24" CornerRadius="0">
             <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         </Frame>
