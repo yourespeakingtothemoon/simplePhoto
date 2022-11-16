@@ -28,9 +28,6 @@ namespace simplePhoto.Views
             InitializeComponent();
         }
 
-        string gFilePath = "";
-        string gFileName = "";
-        Stream gStream = new MemoryStream();
         byte[] bytes;
         public static ISave save { get; private set; }
 
@@ -52,16 +49,13 @@ namespace simplePhoto.Views
                 var result = await FilePicker.PickAsync(); // have the user input a file
                 if (result != null)
                 {
-                    gFileName = result.FileName;
                     if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
                         result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase)) // make sure that the file is a valid type
                     {
                         var stream2 = await result.OpenReadAsync(); // read the file as a stream
                         SKBitmap skb = new SKBitmap();
                         skb = SKBitmap.Decode(stream2); // turn the stream into a SkiaSharp bitmap
-                        gFilePath = result.FullPath.Remove(result.FullPath.Length - result.FileName.Length);
-                        FileName.Text = gFileName; // display the file name 
-                        bytes = skb.Bytes;
+                        FileName.Text = result.FileName; // display the file name 
                         // *To be removed in final version* //
                         Random random = new Random();
                         Color filter = new Color(29,231, 55, 0);
@@ -86,7 +80,7 @@ namespace simplePhoto.Views
                         SKData skd = skb.Encode(SKEncodedImageFormat.Png,100);
                         Stream stream3 = new MemoryStream();
                         stream3 = skd.AsStream();
-                        gStream = skd.AsStream();
+                        bytes = skd.ToArray();
                         MainImage.Source = ImageSource.FromStream(() => stream3);
                         /*byte[] data2 = skb.Bytes;
                         string str2 = "";
