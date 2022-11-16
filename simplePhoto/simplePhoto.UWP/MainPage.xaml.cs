@@ -1,6 +1,7 @@
 ﻿using simplePhoto.Views;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -27,16 +28,20 @@ namespace simplePhoto.UWP
             var savePicker = new Windows.Storage.Pickers.FileSavePicker();
             savePicker.SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.Desktop;
             // Dropdown of file types the user can save the file as
-            savePicker.FileTypeChoices.Add("Image", new List<string>() { ".png" });
+            savePicker.FileTypeChoices.Add("Image", new List<string>() { ".bmp" });
             // Default file name if the user does not type one in or select a file to replace
             savePicker.SuggestedFileName = "Image";
             Windows.Storage.StorageFile file = await savePicker.PickSaveFileAsync();
+
             if (file != null)
             {
-                // Prevent updates to the remote version of the file until
+                await FileIO.WriteBytesAsync(file, bytes);
+                //File.WriteAllBytes(file.Path, bytes);
+                /*// Prevent updates to the remote version of the file until
                 // we finish making changes and call CompleteUpdatesAsync.
                 Windows.Storage.CachedFileManager.DeferUpdates(file);
                 // write to file
+
                 var stream = await file.OpenAsync(Windows.Storage.FileAccessMode.ReadWrite);
                 using (var outputStream = stream.GetOutputStreamAt(0))
                 {
@@ -48,7 +53,7 @@ namespace simplePhoto.UWP
                             bytestr += item;
                         }
                         dataWriter.WriteString(bytestr);
-                        //await dataWriter.StoreAsync();
+                        await dataWriter.StoreAsync();
                         await outputStream.FlushAsync();
                     }
                 }
@@ -56,7 +61,7 @@ namespace simplePhoto.UWP
                 // Let Windows know that we're finished changing the file so
                 // the other app can update the remote version of the file.
                 // Completing updates may require Windows to ask for user input.
-                Windows.Storage.Provider.FileUpdateStatus status = await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);
+                Windows.Storage.Provider.FileUpdateStatus status = await Windows.Storage.CachedFileManager.CompleteUpdatesAsync(file);*/
             }
         }
     }
