@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SkiaSharp;
 
 namespace PicturePickle
 {
@@ -13,6 +14,10 @@ namespace PicturePickle
         public MainPage()
         {
             InitializeComponent();
+
+            // upload button event handler
+
+            // save button event handler
         }
     }
 }
