@@ -70,7 +70,7 @@ namespace PicturePickle
         /// </summary>
         /// <param name="alpha">Should alpha be incuded in the calculation</param>
         /// <returns>The vlaue of the pixel</returns>
-        public float value(bool alpha = false)
+        public float Value(bool alpha = false)
         {
             if (!alpha)
             {
