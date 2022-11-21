@@ -7,6 +7,6 @@ namespace PicturePickle
     // the global interface for saving the image
     internal interface ISave
     {
-        void saveFile(string format,string filename,Object item);
+        void saveFile(byte[] arrayToSave);
     }
 }
