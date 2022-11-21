@@ -65,6 +65,22 @@ namespace PicturePickle
             }
         }
 
+        /// <summary>
+        /// Get the value of the pixel
+        /// </summary>
+        /// <param name="alpha">Should alpha be incuded in the calculation</param>
+        /// <returns>The vlaue of the pixel</returns>
+        public float value(bool alpha = false)
+        {
+            if (!alpha)
+            {
+                return ((r + g + b) / 3.0f);
+            }
+            else
+            {
+                return ((r + g + b + a) / 4.0f);
+            }    
+        }
 
         //*** CONSTRUCTORS ***//
         public Color()
