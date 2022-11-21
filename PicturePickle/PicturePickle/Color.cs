@@ -6,7 +6,7 @@ using SkiaSharp;
 namespace PicturePickle
 {
     // color class because hsv is stinky
-    internal class Color
+    public class Color
     {
         // these will be public because i dont care about encapsulation 
         public int r, g, b, a;
