@@ -40,6 +40,43 @@ namespace PicturePickle
         }
 
         /// <summary>
+        /// Set current color to another color
+        /// </summary>
+        /// <param name="col">Color to set</param>
+        public void Set(ref Color col)
+        { 
+            r = col.r;
+            g = col.g;
+            b = col.b;
+            a = col.a;
+            toZeroToOne();
+        }
+
+        /// <summary>
+        /// Set current color to another color
+        /// </summary>
+        /// <param name="c">Color to set as one 0-255 int</param>
+        public void Set(int c)
+        {
+            r = c;
+            g = c;
+            b = c;
+            toZeroToOne();
+        }
+
+        /// <summary>
+        /// Set current color to another color
+        /// </summary>
+        /// <param name="c">Color to set as one 0-1 float</param>
+        public void Set(float c)
+        {
+            zR = c;
+            zG = c;
+            zB = c;
+            toInts();
+        }
+
+        /// <summary>
         /// Convert the color to an SKColor
         /// </summary>
         /// <param name="scaled">Should the values be scaled or capped</param>
@@ -99,6 +136,15 @@ namespace PicturePickle
             b = c;
             a = 255;
             toZeroToOne();
+        }
+
+        public Color(float c)
+        {
+            zR = c;
+            zG = c;
+            zB = c;
+            zA = 1.0f;
+            toInts();
         }
 
         public Color(int r, int g, int b, int a = 255)
