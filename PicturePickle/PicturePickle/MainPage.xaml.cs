@@ -57,6 +57,9 @@ namespace PicturePickle
             }
         }
 
+        // whatever we use to apply the filters
+        // button / automatically when selected
+
 
         // save button event handler & things required for it to work
         public static ISave save { get; private set; }

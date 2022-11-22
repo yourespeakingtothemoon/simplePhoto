@@ -9,8 +9,8 @@ namespace PicturePickle
     public class Color
     {
         // these will be public because i dont care about encapsulation 
-        public int r, g, b, a;
-        public float zR, zG, zB, zA;
+        public int r, g, b, a; // 0-255 representation
+        public float zR, zG, zB, zA; // 0-1 representation
 
         /// <summary>
         /// Use the colors as floats to multiply the colors together
@@ -101,7 +101,7 @@ namespace PicturePickle
             toZeroToOne();
         }
 
-        public Color(int r, int g, int b, int a)
+        public Color(int r, int g, int b, int a = 255)
         { 
             this.r = r;
             this.g = g;
@@ -110,30 +110,12 @@ namespace PicturePickle
             toZeroToOne();
         }
 
-        public Color(int r, int g, int b)
-        {
-            this.r = r;
-            this.g = g;
-            this.b = b;
-            this.a = 255;
-            toZeroToOne();
-        }
-
-        public Color(float r, float g, float b, float a)
+        public Color(float r, float g, float b, float a = 1.0f)
         {
             zR = r;
             zG = g;
             zB = b;
             zA = a;
-            toInts();
-        }
-
-        public Color(float r, float g, float b)
-        {
-            zR = r;
-            zG = g;
-            zB = b;
-            zA = 1.0f;
             toInts();
         }
 
