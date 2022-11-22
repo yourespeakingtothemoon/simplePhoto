@@ -27,6 +27,8 @@
                 </FormattedString>
             </Label.FormattedText>
         </Label>
+        <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" />
+        <Button x:Name="saveButton" Text="Save" Clicked="SaveImage_Clicked" />
     </StackLayout>
 
 </ContentPage>

@@ -5,7 +5,7 @@ using System.Text;
 namespace PicturePickle
 {
     // the global interface for saving the image
-    internal interface ISave
+    public interface ISave
     {
         void saveFile(byte[] arrayToSave);
     }

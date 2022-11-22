@@ -6,18 +6,71 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using SkiaSharp;
+using Xamarin.Essentials;
+using System.Runtime.InteropServices.ComTypes;
+using System.IO;
 
 namespace PicturePickle
 {
     public partial class MainPage : ContentPage
     {
+        /// <summary>
+        /// Start the program
+        /// </summary>
         public MainPage()
         {
             InitializeComponent();
 
-            // upload button event handler
+        }
+        // global things
+        byte[] bytes;
+        SKBitmap gSKB;
 
-            // save button event handler
+        // upload button event handler
+        async private void uploadButtonClicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var result = await FilePicker.PickAsync(); // have the user input a file
+                if (result != null)
+                {
+                    if (result.FileName.EndsWith("jpg", StringComparison.OrdinalIgnoreCase) ||
+                        result.FileName.EndsWith("png", StringComparison.OrdinalIgnoreCase)) // make sure that the file is a valid type
+                    {
+                        var stream = await result.OpenReadAsync(); // read the file as a stream
+                        gSKB = SKBitmap.Decode(stream); // turn the stream into a SkiaSharp bitmap
+
+                        SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
+                        Stream stream2 = new MemoryStream();
+                        stream2 = skd.AsStream();
+                        bytes = skd.ToArray();
+                    }
+                }
+                else
+                {
+                    //FileName.Text = "Incorrect file type. Please enter a .png or .jpg file.";
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        // save button event handler & things required for it to work
+        public static ISave save { get; private set; }
+        public static void Init(ISave saver) { MainPage.save = saver; }
+        private void SaveImage_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                save.saveFile(bytes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

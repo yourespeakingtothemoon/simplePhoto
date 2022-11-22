@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Xamarin.Forms;
 
 namespace PicturePickle.UWP
 {
@@ -20,6 +21,8 @@ namespace PicturePickle.UWP
         public MainPage()
         {
             this.InitializeComponent();
+
+            PicturePickle.MainPage.Init(new PicturePickle.Save());
 
             LoadApplication(new PicturePickle.App());
         }
