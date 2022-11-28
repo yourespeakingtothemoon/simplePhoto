@@ -8,13 +8,9 @@ namespace PicturePickle
     // base filter class that all other filters will inherit from
     public abstract class Filter
     {
-        public abstract void addLayer(Color color,int behavior);
-        public abstract void removeLayer(Color color,int behavior);
+        public Color color;
 
-        public Color[] colors;
-
-        public int[] behaviors;
-
-        public abstract SKColor execute(Color pixColor);
+        public abstract void execute(ref SKBitmap image);
     }
+
 }
