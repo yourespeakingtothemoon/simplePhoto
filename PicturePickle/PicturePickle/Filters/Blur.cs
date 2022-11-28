@@ -7,10 +7,21 @@ namespace PicturePickle
 {
     internal class Blur: Filter
     {
-
+        private int ammount, times;
+        public Blur(int ammount, int times)
+        { 
+            this.ammount = ammount;
+            this.times = times;
+        }
         public override void execute(ref SKBitmap image)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < times; i++)
+            { 
+                SKBitmap buffer = new SKBitmap((int)(image.Width / (ammount / times)), (int)(image.Height / (ammount / times)));
+                image.ScalePixels(buffer, SKFilterQuality.High);
+                buffer.ScalePixels(image, SKFilterQuality.High);
+                
+            }
         }
     }
 }
