@@ -43,6 +43,7 @@ namespace PicturePickle
                         SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
                         Stream stream2 = new MemoryStream();
                         stream2 = skd.AsStream();
+                        // display the image
                         bytes = skd.ToArray();
                     }
                 }

@@ -17,9 +17,11 @@ namespace PicturePickle
         /// </summary>
         /// <param name="col"></param>
         /// <returns>The new multiplied color</returns>
-        public Color Multiply(ref Color col) 
+        public void Multiply(ref Color col) 
         {
-            return new Color(zR * col.zR, zG * col.zG, zB * col.zB, zA);
+            zR += col.zR;
+            zG += col.zG;
+            zB += col.zB;
         }
 
         /// <summary>
@@ -27,15 +29,20 @@ namespace PicturePickle
         /// </summary>
         /// <param name="col"></param>
         /// <returns>The new added Color</returns>
-        public Color Add(ref Color col, bool alpha = false)
+        public void Add(ref Color col, bool alpha = false)
         {
             if (alpha)
             {
-                return new Color(r + col.r, g + col.g, b + col.b, a + col.a);
+                r += col.r;
+                g += col.g;
+                b += col.b;
+                a += col.a;
             }
             else
             {
-                return new Color(r + col.r, g + col.g, b + col.b, a);
+                r += col.r;
+                g += col.g;
+                b += col.b;
             }
         }
 
