@@ -16,8 +16,4 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Filters\" />
-  </ItemGroup>
 </Project>

@@ -20,10 +20,9 @@ namespace PicturePickle
                 {
 
                     Color pixelColor = new Color(image.GetPixel(x, y));
-                    Color newColor = new Color(pixelColor);
-                    pixelColor.Add(ref newColor);
+                    pixelColor.Add(ref color);
                     //Color.ToByte(ref newColor);
-                    image.SetPixel(x, y, newColor.ToSKColor());
+                    image.SetPixel(x, y, pixelColor.ToSKColor());
                     //Console.WriteLine("Pixel Done!");
 
                 }

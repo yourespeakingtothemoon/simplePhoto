@@ -26,6 +26,7 @@ namespace PicturePickle
         byte[] bytes;
         SKBitmap gSKB;
         Add gAdd = new Add(new Color(105, 165, 126));
+        Multiply gMult = new Multiply(new Color(105, 165, 126));
 
         // upload button event handler
         async private void uploadButtonClicked(object sender, EventArgs e)
@@ -64,7 +65,7 @@ namespace PicturePickle
         // button / automatically when selected
         private void applyFilters_Clicked(object sender, EventArgs e)
         {
-            gAdd.execute(ref gSKB);
+            gMult.execute(ref gSKB);
             SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
             Stream stream2 = new MemoryStream();
             stream2 = skd.AsStream();

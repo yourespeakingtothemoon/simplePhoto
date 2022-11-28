@@ -19,9 +19,10 @@ namespace PicturePickle
         /// <returns>The new multiplied color</returns>
         public void Multiply(ref Color col) 
         {
-            zR += col.zR;
-            zG += col.zG;
-            zB += col.zB;
+            zR *= col.zR;
+            zG *= col.zG;
+            zB *= col.zB;
+            toInts();
         }
 
         /// <summary>
@@ -44,6 +45,7 @@ namespace PicturePickle
                 g += col.g;
                 b += col.b;
             }
+            toZeroToOne();
         }
 
         /// <summary>
