@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using SkiaSharp;
 
-namespace PicturePickle.Filters
+namespace PicturePickle
 {
     internal class Add: Filter
     {
+       public Add(Color col)
+        {
+            this.color = col;
+        }
 
         public override void execute(ref SKBitmap image)
         {

@@ -25,6 +25,7 @@ namespace PicturePickle
         // global things
         byte[] bytes;
         SKBitmap gSKB;
+        Add gAdd = new Add(new Color(105, 165, 126));
 
         // upload button event handler
         async private void uploadButtonClicked(object sender, EventArgs e)
@@ -44,6 +45,7 @@ namespace PicturePickle
                         Stream stream2 = new MemoryStream();
                         stream2 = skd.AsStream();
                         // display the image
+                        imageView.Source = ImageSource.FromStream(()=>stream2);
                         bytes = skd.ToArray();
                     }
                 }
@@ -60,7 +62,16 @@ namespace PicturePickle
 
         // whatever we use to apply the filters
         // button / automatically when selected
-
+        private void applyFilters_Clicked(object sender, EventArgs e)
+        {
+            gAdd.execute(ref gSKB);
+            SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
+            Stream stream2 = new MemoryStream();
+            stream2 = skd.AsStream();
+            // display the image
+            imageView.Source = ImageSource.FromStream(() => stream2);
+            bytes = skd.ToArray();
+        }
 
         // save button event handler & things required for it to work
         public static ISave save { get; private set; }
@@ -76,5 +87,7 @@ namespace PicturePickle
                 Console.WriteLine(ex.Message);
             }
         }
+
+      
     }
 }
