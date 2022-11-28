@@ -120,11 +120,11 @@ namespace PicturePickle
         {
             if (!alpha)
             {
-                return ((r + g + b) / 3.0f);
+                return ((r + g + b) * 0.33333333f);
             }
             else
             {
-                return ((r + g + b + a) / 4.0f);
+                return ((r + g + b + a) * 0.25f);
             }    
         }
 
