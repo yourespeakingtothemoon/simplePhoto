@@ -75,6 +75,7 @@ namespace PicturePickle
             {
                 filter.execute(ref gSKB);
             }
+
             SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
             Stream stream2 = new MemoryStream();
             stream2 = skd.AsStream();

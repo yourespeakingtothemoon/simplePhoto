@@ -18,7 +18,7 @@ namespace PicturePickle
             for (int i = 0; i < times; i++)
             { 
                 SKBitmap buffer = new SKBitmap((int)(image.Width / (ammount / times)), (int)(image.Height / (ammount / times)));
-                image.ScalePixels(buffer, SKFilterQuality.High);
+                image.ScalePixels(buffer, SKFilterQuality.High); // scale the image up and down to automatically average the colors
                 buffer.ScalePixels(image, SKFilterQuality.High);
                 
             }
