@@ -29,6 +29,7 @@ namespace PicturePickle
         Multiply gMult = new Multiply(new Color(255, 0, 0));
         Grayscale gGray = new Grayscale();
         Blur gBlur = new Blur(20, 5);
+        Bloom gBloom = new Bloom();
 
         // upload button event handler
         async private void uploadButtonClicked(object sender, EventArgs e)
@@ -67,7 +68,7 @@ namespace PicturePickle
         // button / automatically when selected
         private void applyFilters_Clicked(object sender, EventArgs e)
         {
-            gBlur.execute(ref gSKB);
+            gBloom.execute(ref gSKB);
             SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
             Stream stream2 = new MemoryStream();
             stream2 = skd.AsStream();
