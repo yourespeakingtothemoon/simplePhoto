@@ -69,7 +69,7 @@
                         </Grid.ColumnDefinitions>
                         <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" Grid.Column="0" BackgroundColor="{StaticResource Accent2}"/>
                         <Button x:Name="applyFilters" IsEnabled="False" Text="Apply Filter" Clicked="applyFilters_Clicked" Grid.Column="1" BackgroundColor="{StaticResource Accent2}"/>
-                        <Button x:Name="saveButton" Text="Save" Clicked="SaveImage_Clicked" Grid.Column="2" BackgroundColor="{StaticResource Accent2}"/>
+                        <Button x:Name="saveButton" IsEnabled="False" Text="Save" Clicked="SaveImage_Clicked" Grid.Column="2" BackgroundColor="{StaticResource Accent2}"/>
                         <!-- Grid is the new Table (Coming to Netflix)-->
                     </Grid>
 

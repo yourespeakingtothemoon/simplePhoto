@@ -57,6 +57,7 @@ namespace PicturePickle
                         bytes = skd.ToArray();
                         //applyFilters.Text = "Apply Filter";
                         applyFilters.IsEnabled = true;
+                        saveButton.IsEnabled = true;
                     }
                 }
                 else
@@ -105,16 +106,18 @@ namespace PicturePickle
         public static void Init(ISave saver) { MainPage.save = saver; }
         private void SaveImage_Clicked(object sender, EventArgs e)
         {
-            try
+            if (gSKB != null)
             {
                 save.saveFile(bytes);
             }
-            catch (Exception ex)
+            else 
             {
-                Console.WriteLine(ex.Message);
+                saveButton.IsEnabled = false;
+                saveButton.Text = "Upload Image First!";
             }
         }
 
+        // building the preset filters
         private void filterBuilder()
         {
             switch (filterMenu.SelectedItem)
@@ -122,7 +125,6 @@ namespace PicturePickle
                 case "Pickle":
                     //filters.AddLast(new ValueAdj(.7f));
                     filters.AddLast(new Add(new Color(105,165, 126)));
-                   
                     break;
                 case "Lune":
                     filters.AddLast(new ValueAdj(.75f));
