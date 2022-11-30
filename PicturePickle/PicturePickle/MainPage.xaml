@@ -8,7 +8,6 @@
             <Color x:Key="Main">#69A57E</Color>
             <Color x:Key="Accent2">#69A4A5</Color>
             <Color x:Key="AccentComplement">#A56990</Color>
-
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -18,30 +17,15 @@
             <RowDefinition Height="70*"/>
             <RowDefinition Height="10*"/>
             <RowDefinition Height="10*"/>
-            
         </Grid.RowDefinitions>
+
         <Label BackgroundColor="{StaticResource Main}" Padding="24" Grid.Row="0" Text="Welcome to Picture Pickle!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="22"/>
 
+        <ContentView Grid.Row="1" >
+            <Image x:Name="imageView"  />
+        </ContentView>
 
-
-
-
-
-        <!-- <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="60*" />
-                            <ColumnDefinition Width="40*"/>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Button x:Name="addFilter" Text="Add Filter" Clicked="addFilter_Clicked" Grid.Column="1"/>
-                    </Grid>-->
-
-
-                    <ContentView Grid.Row="1" >
-                        <Image x:Name="imageView"  />
-                    </ContentView>
-        
-            <Picker x:Name="filterMenu" Grid.Row="2" SelectedIndexChanged="filterMenu_SelectedIndexChanged">
+        <Picker x:Name="filterMenu" Grid.Row="2" SelectedIndexChanged="filterMenu_SelectedIndexChanged">
             <Picker.Items>
                 <x:String>
                     Pickle
@@ -60,20 +44,17 @@
                 </x:String>
             </Picker.Items>
         </Picker>
-    
+
         <Grid Grid.Row="3">
-                        <Grid.ColumnDefinitions >
-                            <ColumnDefinition Width="25*" />
-                            <ColumnDefinition Width="50*" />
-                            <ColumnDefinition Width="25*" />
-                        </Grid.ColumnDefinitions>
-                        <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" Grid.Column="0" BackgroundColor="{StaticResource Accent2}"/>
-                        <Button x:Name="applyFilters" IsEnabled="False" Text="Apply Filter" Clicked="applyFilters_Clicked" Grid.Column="1" BackgroundColor="{StaticResource Accent2}"/>
-                        <Button x:Name="saveButton" IsEnabled="False" Text="Save" Clicked="SaveImage_Clicked" Grid.Column="2" BackgroundColor="{StaticResource Accent2}"/>
-                        <!-- Grid is the new Table (Coming to Netflix)-->
-                    </Grid>
-
-                </Grid>
-      
-
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="25*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" Grid.Column="0" BackgroundColor="{StaticResource Accent2}"/>
+            <Button x:Name="applyFilters" IsEnabled="False" Text="Apply Filter" Clicked="applyFilters_Clicked" Grid.Column="1" BackgroundColor="{StaticResource Accent2}"/>
+            <Button x:Name="saveButton" IsEnabled="False" Text="Save" Clicked="SaveImage_Clicked" Grid.Column="2" BackgroundColor="{StaticResource Accent2}"/>
+            <!-- Grid is the new Table (Coming to Netflix)-->
+        </Grid>
+    </Grid>
 </ContentPage>
