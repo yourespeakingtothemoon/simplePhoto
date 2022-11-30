@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using SkiaSharp;
 using Xamarin.Essentials;
+using Xamarin.CommunityToolkit;
 using System.Runtime.InteropServices.ComTypes;
 using System.IO;
 
@@ -20,12 +21,13 @@ namespace PicturePickle
         public MainPage()
         {
             InitializeComponent();
-
+            this.BindingContext = this;
         }
         // global things
         byte[] bytes;
         SKBitmap gSKB;
         LinkedList<Filter> filters = new LinkedList<Filter>();
+      
         /*Add gAdd = new Add(new Color(105, 165, 126));
         Multiply gMult = new Multiply(new Color(255, 0, 0));
         Grayscale gGray = new Grayscale();
@@ -35,6 +37,7 @@ namespace PicturePickle
         // upload button event handler
         async private void uploadButtonClicked(object sender, EventArgs e)
         {
+           
             try
             {
                 var result = await FilePicker.PickAsync(); // have the user input a file
@@ -52,6 +55,8 @@ namespace PicturePickle
                         // display the image
                         imageView.Source = ImageSource.FromStream(()=>stream2);
                         bytes = skd.ToArray();
+                        //applyFilters.Text = "Apply Filter";
+                        applyFilters.IsEnabled = true;
                     }
                 }
                 else
@@ -69,19 +74,30 @@ namespace PicturePickle
         // button / automatically when selected
         private void applyFilters_Clicked(object sender, EventArgs e)
         {
-            filters.AddLast(new Bloom(150));
-            filters.AddLast(new Multiply(new Color(255, 0, 0)));
-            foreach (Filter filter in filters)
+            if (gSKB != null)
             {
-                filter.execute(ref gSKB);
-            }
+                filterBuilder();
 
-            SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
-            Stream stream2 = new MemoryStream();
-            stream2 = skd.AsStream();
-            // display the image
-            imageView.Source = ImageSource.FromStream(() => stream2);
-            bytes = skd.ToArray();
+                foreach (Filter filter in filters)
+                {
+                    filter.execute(ref gSKB);
+                }
+
+                filters.Clear();
+
+                SKData skd = gSKB.Encode(SKEncodedImageFormat.Png, 100);
+                Stream stream2 = new MemoryStream();
+                stream2 = skd.AsStream();
+                // display the image
+                imageView.Source = ImageSource.FromStream(() => stream2);
+                bytes = skd.ToArray();
+            }
+            else
+            {
+                applyFilters.IsEnabled = false;
+                applyFilters.Text = "Upload Image First!";
+                //applyFilters.
+            }
         }
 
         // save button event handler & things required for it to work
@@ -99,9 +115,43 @@ namespace PicturePickle
             }
         }
 
-        private void addFilter_Clicked(object sender, EventArgs e)
+        private void filterBuilder()
         {
+            switch (filterMenu.SelectedItem)
+            {
+                case "Pickle":
+                    //filters.AddLast(new ValueAdj(.7f));
+                    filters.AddLast(new Add(new Color(105,165, 126)));
+                   
+                    break;
+                case "Lune":
+                    filters.AddLast(new ValueAdj(.75f));
+                    filters.AddLast(new Grayscale());
+                    break;
+                case "Overblow":
+                    filters.AddLast(new Bloom(90));
+                    break;
+                case "VirtualBoy":
+                    filters.AddLast(new Bloom(150));
+                    filters.AddLast(new Multiply(new Color(255, 0, 0)));
+                    break;
+                case "Custom":
+                    Page1 page1 = new Page1();  
+                    Navigation.PushModalAsync(page1);
+                    break;
+            }
+        }
 
+        private void filterMenu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filterMenu.SelectedItem.Equals("Custom"))
+            {
+                applyFilters.Text = "Open Menu";
+            }
+            else
+            {
+                applyFilters.Text = "Apply "+filterMenu.SelectedItem;
+            }
         }
     }
 }
