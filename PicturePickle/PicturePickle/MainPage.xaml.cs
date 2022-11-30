@@ -69,7 +69,7 @@ namespace PicturePickle
         // button / automatically when selected
         private void applyFilters_Clicked(object sender, EventArgs e)
         {
-            filters.AddLast(new Blur(20, 5));
+            filters.AddLast(new Bloom(150));
             filters.AddLast(new Multiply(new Color(255, 0, 0)));
             foreach (Filter filter in filters)
             {
@@ -99,6 +99,9 @@ namespace PicturePickle
             }
         }
 
-      
+        private void addFilter_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

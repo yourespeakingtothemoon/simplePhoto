@@ -11,19 +11,48 @@
 
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout>
-        <Frame BackgroundColor="{StaticResource Main}" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <ScrollView>
-            <StackLayout>
-                <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-                <Image x:Name="imageView"/>
-                <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" />
-                <Button x:Name="applyFilters" Text="Apply Filters" Clicked="applyFilters_Clicked"/>
-                <Button x:Name="saveButton" Text="Save" Clicked="SaveImage_Clicked" />  
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="70*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Frame BackgroundColor="{StaticResource Main}" Padding="24" CornerRadius="0" Grid.Row="0">
+            <StackLayout Spacing="10">
+                <Label Text="Welcome to Picture Pickle!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+                
+                <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="60*" />
+                    <ColumnDefinition Width="40*"/>
+                </Grid.ColumnDefinitions>
+                <Picker Grid.Column="0">
+                    <Picker.Items>
+                        <x:String>
+                            Grid
+                        </x:String>
+                    </Picker.Items>
+                </Picker>
+                <Button x:Name="addFilter" Text="Add Filter" Clicked="addFilter_Clicked" Grid.Column="1"/>
+            </Grid>
             </StackLayout>
-        </ScrollView>
-    </StackLayout>
+        </Frame>
 
+        <ScrollView Grid.Row="1" >
+                <Image x:Name="imageView"  />
+        </ScrollView>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions >
+                <ColumnDefinition Width="25*" />
+                <ColumnDefinition Width="50*" />
+                <ColumnDefinition Width="25*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="uploadButton" Text="Upload" Clicked="uploadButtonClicked" Grid.Column="0" BackgroundColor="{StaticResource Accent2}"/>
+            <Button x:Name="applyFilters" Text="Apply Filters" Clicked="applyFilters_Clicked" Grid.Column="1" BackgroundColor="{StaticResource Accent2}"/>
+            <Button x:Name="saveButton" Text="Save" Clicked="SaveImage_Clicked" Grid.Column="2" BackgroundColor="{StaticResource Accent2}"/>
+            <!-- Grid is the new Table (Coming to Netflix)-->
+        </Grid>
+    </Grid>
+    
 </ContentPage>
