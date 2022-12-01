@@ -40,6 +40,9 @@
                     VirtualBoy
                 </x:String>
                 <x:String>
+                    Painting
+                </x:String>
+                <x:String>
                     Custom
                 </x:String>
             </Picker.Items>

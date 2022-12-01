@@ -137,6 +137,9 @@ namespace PicturePickle
                     filters.AddLast(new Bloom(150));
                     filters.AddLast(new Multiply(new Color(255, 0, 0)));
                     break;
+                case "Painting":
+                    filters.AddLast(new Kuwahara(7));
+                    break;
                 case "Custom":
                     Page1 page1 = new Page1();  
                     Navigation.PushModalAsync(page1);
