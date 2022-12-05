@@ -11,6 +11,8 @@ namespace PicturePickle
         public Color color;
 
         public abstract void execute(ref SKBitmap image);
+
+        public abstract string toString();
     }
 
 }

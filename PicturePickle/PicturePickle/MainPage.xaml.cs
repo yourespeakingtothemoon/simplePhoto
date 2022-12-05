@@ -26,8 +26,9 @@ namespace PicturePickle
         // global things
         byte[] bytes;
         SKBitmap gSKB;
-        LinkedList<Filter> filters = new LinkedList<Filter>();
+        public LinkedList<Filter> filters = new LinkedList<Filter>();
       
+     //Friend
         /*Add gAdd = new Add(new Color(105, 165, 126));
         Multiply gMult = new Multiply(new Color(255, 0, 0));
         Grayscale gGray = new Grayscale();
@@ -73,11 +74,14 @@ namespace PicturePickle
 
         // whatever we use to apply the filters
         // button / automatically when selected
-        private void applyFilters_Clicked(object sender, EventArgs e)
+        public void applyFilters_Clicked(object sender, EventArgs e)
         {
             if (gSKB != null)
             {
-                filterBuilder();
+                if (filters.Count <= 0)
+                {
+                    filterBuilder();
+                }
 
                 foreach (Filter filter in filters)
                 {
@@ -123,7 +127,7 @@ namespace PicturePickle
             switch (filterMenu.SelectedItem)
             {
                 case "Pickle":
-                    //filters.AddLast(new ValueAdj(.7f));
+                    filters.AddLast(new ValueAdj(-.5f));
                     filters.AddLast(new Add(new Color(105,165, 126)));
                     break;
                 case "Lune":
@@ -141,8 +145,8 @@ namespace PicturePickle
                     filters.AddLast(new Kuwahara(7));
                     break;
                 case "Custom":
-                    Page1 page1 = new Page1();  
-                    Navigation.PushModalAsync(page1);
+                    Custom page = new Custom();  
+                    Navigation.PushModalAsync(page);
                     break;
             }
         }

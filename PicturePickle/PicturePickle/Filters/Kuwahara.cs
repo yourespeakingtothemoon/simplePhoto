@@ -139,5 +139,10 @@ namespace PicturePickle
                 s.standardDeviation = float.MaxValue;
             }
         }
+
+        public override string toString()
+        {
+            return "Applying Kuwahara (Painted) effect using a kernel size of "+kernel+".";
+        }
     }
 }

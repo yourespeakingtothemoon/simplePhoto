@@ -6,11 +6,13 @@ namespace PicturePickle
 {
     public partial class App : Application
     {
+
+        public static MainPage main = new MainPage();
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = main;
         }
 
         protected override void OnStart()

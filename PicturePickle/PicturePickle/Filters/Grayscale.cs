@@ -19,5 +19,10 @@ namespace PicturePickle
                 }
             }
         }
+        public override string toString()
+        {
+            return "Changing image to monochrome.";
+        }
     }
+   
 }

@@ -31,5 +31,9 @@ namespace PicturePickle
                 }
             }
         }
+        public override string toString()
+        {
+            return "Adjusting HSL Color Lightness by a factor of "+ val+".";
+        }
     }
 }

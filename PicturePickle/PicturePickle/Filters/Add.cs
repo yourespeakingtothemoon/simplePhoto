@@ -24,5 +24,10 @@ namespace PicturePickle
                 }
             }
         }
+
+        public override string toString()
+        {
+            return "Adding Color " + "[Red: " + color.r + " Green: " + color.g + " Blue: " + color.b + "]" + "to the image.";
+        }
     }
 }

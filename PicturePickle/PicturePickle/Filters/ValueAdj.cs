@@ -32,5 +32,10 @@ namespace PicturePickle
                 }
             }
         }
+
+        public override string toString()
+        {
+            return "Adjusting HSV Color Value by a factor of " + val + ".";
+        }
     }
 }

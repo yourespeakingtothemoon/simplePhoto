@@ -48,5 +48,10 @@ namespace PicturePickle
                 }
             }
         }
+
+        public override string toString()
+        {
+            return "Creating Bloom effect with " + threshold+" as the white threshold.";
+        }
     }
 }

@@ -24,5 +24,10 @@ namespace PicturePickle
                 }
             }
         }
+
+        public override string toString()
+        {
+            return "Multiplying image by the Color values: " + "[Red: " + color.zR.ToString() + " Green: " + color.zG.ToString() + " Blue: " + color.zB.ToString() + "]" + ".";
+        }
     }
 }

@@ -25,6 +25,8 @@ namespace PicturePickle
             toInts();
         }
 
+       
+
         /// <summary>
         /// Add a color to another color
         /// </summary>
@@ -46,6 +48,25 @@ namespace PicturePickle
                 b += col.b;
             }
             toZeroToOne();
+        }
+        /// <summary>
+        /// Set current color its negative for subtraction
+        /// </summary>
+      
+        public void ToAdditiveInverse()
+        {
+            r = -r;
+            g = -g;
+            b = -b;
+        }
+        /// <summary>
+        /// Set current color its recipricol for division
+        /// </summary>
+        public void ToMultiplicitiveInverse()
+        {
+            zR = 1/r;
+            zG = 1/g;
+            zB = 1/b;
         }
 
         /// <summary>
@@ -213,5 +234,6 @@ namespace PicturePickle
             b = (int)(zB * 255.0f);
             a = (int)(zA * 255.0f);
         }
+
     }
 }

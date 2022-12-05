@@ -23,5 +23,10 @@ namespace PicturePickle
                 
             }
         }
+
+        public override string toString()
+        {
+            return "Bluring by a factor of " + ammount + "/" + times + ".";
+        }
     }
 }
