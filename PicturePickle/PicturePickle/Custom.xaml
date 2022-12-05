@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:extensions="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="PicturePickle.Custom">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Accent">#7CA569</Color>
+            <Color x:Key="Main">#69A57E</Color>
+            <Color x:Key="Accent2">#69A4A5</Color>
+            <Color x:Key="AccentComplement">#A56990</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Label BackgroundColor="{StaticResource Main}" Padding="24" Grid.Row="0" Text="Welcome to Picture Pickle!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="22"/>
+
+            <ContentView Grid.Row="1" >
+                <Label x:Name="filterLbl" HorizontalOptions="Center" VerticalOptions="Center" Text="Start adding together different effects and click 'apply filters' to go back to the main screen and apply each effect!"/>
+            </ContentView>
+
+
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Row 1 color entry-->
+                <Entry x:Name="usrR" Placeholder="Red (0-255)" Grid.Column="0" />
+                <Entry x:Name="usrG" Placeholder="Green (0-255)" Grid.Column="1" />
+                <Entry x:Name="usrB" Placeholder="Blue (0-255)" Grid.Column="2" />
+                <Entry x:Name="usrA" Placeholder="Alpha Value (0-255)"  Grid.Column="3" />
+
+                <!-- Row 2 Add, Multiply. Substract, Divide-->
+                <Button x:Name="plus" Text="Add" Grid.Column="4" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="minus" Text="Subtract"  Grid.Column="5"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="multiply" Text="Multiply" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="divide" Text="Divide" Grid.Column="7"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
+               <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
+                <Entry x:Name="G" Placeholder="" Grid.Row="0" Grid.Column="1" />
+                <Entry x:Name="B" Placeholder="Blue (0-255)" Grid.Row="0" Grid.Column="2" />
+                <Entry x:Name="A" Placeholder="Alpha Value (0-255)" Grid.Row="0" Grid.Column="3" />-->
+                <!-- Grid is the new Table (Coming to Netflix)-->
+            </Grid>
+            
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                 
+                </Grid.ColumnDefinitions>
+                <!-- Row 1 color entry-->
+                <Entry x:Name="usrBA" Placeholder="Blur Amount" Grid.Column="0" />
+                <Entry x:Name="usrBT" Placeholder="Blur Times" Grid.Column="1" />
+                <Entry x:Name="usrK" Placeholder="Kernal Size" Grid.Column="3" />
+                <Entry x:Name="usrT" Placeholder="Bloom Threshold"  Grid.Column="5" />
+
+                <!-- Row 2 Add, Multiply. Substract, Divide-->
+                <Button x:Name="blur" Text="Blur" Grid.Column="2" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="kuwa" Text="Kuwahara"  Grid.Column="4"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="bloom" Text="Bloom" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+             
+                <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
+               <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
+                <Entry x:Name="G" Placeholder="" Grid.Row="0" Grid.Column="1" />
+                <Entry x:Name="B" Placeholder="Blue (0-255)" Grid.Row="0" Grid.Column="2" />
+                <Entry x:Name="A" Placeholder="Alpha Value (0-255)" Grid.Row="0" Grid.Column="3" />-->
+                <!-- Grid is the new Table (Coming to Netflix)-->
+            </Grid>
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                 
+
+                </Grid.ColumnDefinitions>
+                <!-- Row 1 color entry-->
+                <Entry x:Name="usrV" Placeholder="Value Adj (decimal -1-1)" Grid.Column="0" />
+                <Entry x:Name="usrL" Placeholder="Lightness Adj (decimal -1-1)" Grid.Column="2" />
+            
+
+                <!-- Row 2 Add, Multiply. Substract, Divide-->
+                <Button x:Name="value" Text="Adjust Value" Grid.Column="1" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="light" Text="Adjust Lightness"  Grid.Column="3"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="grayscale" Text="Make Grayscale" Grid.Column="4"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="invert" Text="Invert Color" Grid.Column="5"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+
+                <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
+                <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
+                <Entry x:Name="G" Placeholder="" Grid.Row="0" Grid.Column="1" />
+                <Entry x:Name="B" Placeholder="Blue (0-255)" Grid.Row="0" Grid.Column="2" />
+                <Entry x:Name="A" Placeholder="Alpha Value (0-255)" Grid.Row="0" Grid.Column="3" />-->
+                <!-- Grid is the new Table (Coming to Netflix)-->
+            </Grid>
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="60*"/>
+                    <ColumnDefinition Width="30*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="back" Text="Back" Clicked="back_Clicked" Grid.Column="0"/>
+                <Button x:Name="usrApply" Text="Apply Filters" Clicked="usrApply_Clicked" Grid.Column="1"/>
+                <Button x:Name="usrClear" Text="Clear Filters" Clicked="usrClear_Clicked" Grid.Column="2"/>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
