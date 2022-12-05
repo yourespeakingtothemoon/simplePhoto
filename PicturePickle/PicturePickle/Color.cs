@@ -65,9 +65,7 @@ namespace PicturePickle
         /// </summary>
         public void ToMultiplicitiveInverse()
         {
-            zR = 1 - r / 255.0f;
-            zG = 1 - g / 255.0f;
-            zB = 1 - b / 255.0f;
+            zR = 1.0f/zR;    zG = 1.0f/zG;    zB = 1.0f / zB;
         }
 
         /// <summary>

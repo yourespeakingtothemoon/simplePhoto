@@ -96,7 +96,11 @@ namespace PicturePickle
                     
                     filter = new Grayscale();
                     break;
-              
+                case "Invert Color":
+
+                    filter = new Invert();
+                    break;
+
             }
 
             if (filter != null)

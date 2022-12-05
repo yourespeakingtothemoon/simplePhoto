@@ -94,6 +94,7 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                  
 
                 </Grid.ColumnDefinitions>
@@ -106,6 +107,7 @@
                 <Button x:Name="value" Text="Adjust Value" Grid.Column="1" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="light" Text="Adjust Lightness"  Grid.Column="3"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="grayscale" Text="Make Grayscale" Grid.Column="4"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="invert" Text="Invert Color" Grid.Column="5"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
 
                 <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
                 <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
