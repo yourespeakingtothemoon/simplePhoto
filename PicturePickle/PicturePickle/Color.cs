@@ -150,6 +150,17 @@ namespace PicturePickle
             }    
         }
 
+        /// <summary>
+        /// Invert the colors
+        /// </summary>
+        public void Invert()
+        {
+            r = 255 - r;
+            g = 255 - g;
+            b = 255 - b;
+            toZeroToOne();
+        }
+
         //*** CONSTRUCTORS ***//
         public Color()
         {
