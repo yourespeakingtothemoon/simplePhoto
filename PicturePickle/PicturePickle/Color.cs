@@ -49,24 +49,25 @@ namespace PicturePickle
             }
             toZeroToOne();
         }
+
         /// <summary>
         /// Set current color its negative for subtraction
         /// </summary>
-      
         public void ToAdditiveInverse()
         {
             r = -r;
             g = -g;
             b = -b;
         }
+
         /// <summary>
         /// Set current color its recipricol for division
         /// </summary>
         public void ToMultiplicitiveInverse()
         {
-            zR = 1/r;
-            zG = 1/g;
-            zB = 1/b;
+            zR = 1 - r / 255.0f;
+            zG = 1 - g / 255.0f;
+            zB = 1 - b / 255.0f;
         }
 
         /// <summary>

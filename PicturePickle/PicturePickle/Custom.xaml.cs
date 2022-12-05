@@ -82,7 +82,7 @@ namespace PicturePickle
                //layer 3
                 case "Adjust Value":
                     float val = -.5f;
-                    float.TryParse(usrK.Text, out val);
+                    float.TryParse(usrV.Text, out val);
                     filter = new ValueAdj(val);
                     break;
                     
