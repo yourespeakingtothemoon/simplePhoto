@@ -127,7 +127,6 @@ namespace PicturePickle
             switch (filterMenu.SelectedItem)
             {
                 case "Pickle":
-                    filters.AddLast(new ValueAdj(-.5f));
                     filters.AddLast(new Add(new Color(105,165, 126)));
                     break;
                 case "Lune":
