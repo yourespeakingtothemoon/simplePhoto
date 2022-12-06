@@ -161,8 +161,9 @@ namespace PicturePickle
 
                     break;
                 case "Lune":
-                    filters.AddLast(new ValueAdj(.75f));
-                    filters.AddLast(new Grayscale());
+                    /*filters.AddLast(new ValueAdj(.75f));
+                    filters.AddLast(new Grayscale());*/
+                    filters.AddLast(new TwoTone(new Color(255, 50, 0), new Color(0, 50, 255), 128));
                     break;
                 case "Overblow":
                     filters.AddLast(new Bloom(90));

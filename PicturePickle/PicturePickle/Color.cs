@@ -25,8 +25,6 @@ namespace PicturePickle
             toInts();
         }
 
-       
-
         /// <summary>
         /// Add a color to another color
         /// </summary>
