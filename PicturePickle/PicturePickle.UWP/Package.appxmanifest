@@ -8,8 +8,8 @@
 
   <Identity
     Name="DE6C00F7-F119-414C-8C53-6D49C35DF860"
-    Publisher="CN=9C2F939A-4DF7-4BA4-BB41-6AB354928B99"
-    Version="1.0.0.0" />
+    Publisher="CN=WeLoveGrids"
+    Version="1.0.3.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="PicturePickle.UWP.App">
       <uap:VisualElements
-        DisplayName="PicturePickle.UWP"
+        DisplayName="PicturePickle Xama Edition"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="PicturePickle.UWP"

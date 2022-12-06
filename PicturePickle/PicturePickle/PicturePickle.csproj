@@ -13,6 +13,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Filters\easteregg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Filters\easteregg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="..\..\..\..\..\..\Desktop\Solaris 2\ppicontransparency.png">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>

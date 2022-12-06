@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturePickle.UWP", "PicturePickle\PicturePickle.UWP\PicturePickle.UWP.csproj", "{4CF08578-C41C-4B5F-90F9-DC94E68AF5C3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PicturePickle XamaEdition", "PicturePickle\PicturePickle.UWP\PicturePickle XamaEdition.csproj", "{4CF08578-C41C-4B5F-90F9-DC94E68AF5C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PicturePickle", "PicturePickle\PicturePickle\PicturePickle.csproj", "{6A952588-7A30-430E-BE02-6007C236C6E2}"
 EndProject

@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PicturePickle.UWP")]
+[assembly: AssemblyTitle("PicturePickle Xama Edition")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PicturePickle.UWP")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyProduct("PicturePickle Xama Edition")]
+[assembly: AssemblyCopyright("Copyright WeLoveGrids ©  20XX")]
+[assembly: AssemblyTrademark("g r i d s")]
 [assembly: AssemblyCulture("")]
 
 // Version information for an assembly consists of the following four values:
