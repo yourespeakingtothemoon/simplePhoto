@@ -3,16 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PicturePickle
+namespace PicturePickle.Filters
 {
-    internal class TwoTone : Filter
+    internal class Interpolate : Filter
     {
         private Color col1;
         private Color col2;
         private int cutoff;
 
-        public TwoTone(Color col1, Color col2, int cuttoff)
-        { 
+        public Interpolate(Color col1, Color col2, int cuttoff)
+        {
             this.col1 = col1;
             this.col2 = col2;
             this.cutoff = cuttoff;
@@ -29,17 +29,17 @@ namespace PicturePickle
                     Color co1 = new Color(col1);
                     Color co2 = new Color(col2);
 
-                    if (pixelColor.Value() < cutoff)
-                    {
-                        grayColor.Invert();
-                        co1.Multiply(ref grayColor);
-                        pixelColor = new Color(co1);
-                    }
-                    else
-                    {
-                        co2.Multiply(ref grayColor);
-                        pixelColor = new Color(co2);
-                    }
+                        if (pixelColor.Value() < cut)
+                        {
+                            grayColor.Invert();
+                            co1.Multiply(ref grayColor);
+                            pixelColor = new Color(co1);
+                        }
+                        else
+                        {
+                            co2.Multiply(ref grayColor);
+                            pixelColor = new Color(co2);
+                        }
                     image.SetPixel(x, y, pixelColor.ToSKColor(false));
                 }
             }

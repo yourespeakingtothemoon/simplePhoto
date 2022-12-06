@@ -48,6 +48,20 @@ namespace PicturePickle
             toZeroToOne();
         }
 
+        public Color Interpolate(ref Color col1, ref Color col2)
+        {
+            float val = Value();
+
+            int r1 = col1.r;
+            int r2 = col2.r;
+            int g1 = col1.g;
+            int g2 = col2.g;
+            int b1 = col1.b;
+            int b2 = col2.b;
+
+            return new Color((int)((r2 - r1) * val + r1), (int)((g2 - g1) * val + g1), (int)((b2 - b1) * val + b1));
+        }
+
         /// <summary>
         /// Set current color its negative for subtraction
         /// </summary>
