@@ -50,7 +50,7 @@ namespace PicturePickle
 
         public Color Interpolate(ref Color col1, ref Color col2)
         {
-            float val = Value();
+            float val = Value() / 255;
 
             int r1 = col1.r;
             int r2 = col2.r;

@@ -3,19 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PicturePickle.Filters
+namespace PicturePickle
 {
     internal class Interpolate : Filter
     {
         private Color col1;
         private Color col2;
-        private int cutoff;
 
-        public Interpolate(Color col1, Color col2, int cuttoff)
+        public Interpolate(Color col1, Color col2)
         {
             this.col1 = col1;
             this.col2 = col2;
-            this.cutoff = cuttoff;
         }
 
         public override void execute(ref SKBitmap image)
@@ -25,22 +23,12 @@ namespace PicturePickle.Filters
                 for (int y = 0; y < image.Height; y++)
                 {
                     Color pixelColor = new Color(image.GetPixel(x, y));
-                    Color grayColor = new Color((int)pixelColor.Value());
                     Color co1 = new Color(col1);
                     Color co2 = new Color(col2);
 
-                        if (pixelColor.Value() < cut)
-                        {
-                            grayColor.Invert();
-                            co1.Multiply(ref grayColor);
-                            pixelColor = new Color(co1);
-                        }
-                        else
-                        {
-                            co2.Multiply(ref grayColor);
-                            pixelColor = new Color(co2);
-                        }
-                    image.SetPixel(x, y, pixelColor.ToSKColor(false));
+                    Color Final = pixelColor.Interpolate(ref co1, ref co2);
+
+                    image.SetPixel(x, y, Final.ToSKColor(false));
                 }
             }
         }
