@@ -30,9 +30,20 @@ namespace PicturePickle
 
         private void filterAddition(object sender, EventArgs e)
         {
+            
             Color colorVal;
             Filter filter=null;
+            Filter filter2=null;
             Button btn = sender as Button;
+            int red1, green1, blue1, red2, green2, blue2 = 255;
+            int.TryParse(usrR.Text, out red1);
+            int.TryParse(usrG.Text, out green1);
+            int.TryParse(usrB.Text, out blue1);
+            int.TryParse(usrR2.Text, out red2);
+            int.TryParse(usrG2.Text, out green2);
+            int.TryParse(usrB2.Text, out blue2);
+            Color start = new Color(red1, green1, blue1);
+            Color end = new Color(red2, green2, blue2);
             switch (btn.Text)
             {
                 case "Add":   
@@ -40,26 +51,14 @@ namespace PicturePickle
                 case "Multiply":   
                 case "Divide":
 
-
-                    int Red, Green, Blue;
-                    Red = 255;
-                    Green = 255;
-                    Blue = 255;
-                    int Alpha = 255;
-                        int.TryParse(usrR.Text, out Red);
-                        int.TryParse(usrG.Text, out Green);
-                        int.TryParse(usrB.Text, out Blue);
-                        int.TryParse(usrA.Text, out Alpha);
-                    colorVal = new Color(Red,Green,Blue,Alpha);
-
                     //colorVal.Set(new Color(int.PusrR.Text))
-                    if (btn.Text == "Add") { filter = new Add(colorVal); }
+                    if (btn.Text == "Add") { filter = new Add(start); }
                     if (btn.Text == "Subtract")
-                    { colorVal.ToAdditiveInverse(); filter = new Add(colorVal); }
+                    { start.ToAdditiveInverse(); filter = new Add(start); }
                     if (btn.Text == "Multiply")
-                    { filter = new Multiply(colorVal); }
+                    { filter = new Multiply(start); }
                     if (btn.Text == "Divide")
-                    { colorVal.ToMultiplicitiveInverse(); filter = new Multiply(colorVal); }
+                    { start.ToMultiplicitiveInverse(); filter = new Multiply(start); }
                     break;
                     //layer 2
                 case "Blur":
@@ -100,12 +99,72 @@ namespace PicturePickle
 
                     filter = new Invert();
                     break;
-
+                case "Gradient":
+                
+                   
+                   
+                
+                    switch (directionSel.SelectedIndex)
+                    {
+                        case 0:
+                            //left to right
+                            filter = new LinearGradient(start,end);
+                            break;
+                        case 1:
+                            //right to left
+                            filter = new LinearGradient(end,start);
+                            break;
+                        case 2:
+                            //bottom to top
+                            filter = new LinearGradient(end,start,true);
+                            break;
+                        case 3:
+                            //top to bottom
+                            filter = new LinearGradient(start,end,true);
+                            break;
+                        case 4:
+                            //left to right top to bottom
+                            filter = new LinearGradient(start,end);
+                            filter2 = new LinearGradient(start,end,true);
+                            break;
+                        case 5:
+                            //right to left bottom to top
+                            filter = new LinearGradient(end,start);
+                            filter2 = new LinearGradient(end,start, true);
+                            break;
+                        case 6:
+                            //left to right bottom to top
+                            filter = new LinearGradient(start, end);
+                            filter2 = new LinearGradient(end, start, true);
+                            break;
+                        case 7:
+                            //right to left top to bottom
+                            //filter = new LinearGradient(color, new Color(255, 255, 255));
+                            filter = new LinearGradient(end, start);
+                            filter2 = new LinearGradient(start,end, true);
+                            break;
+                    }
+                    break;
+                case "Interpolate":
+                    filter = new Interpolate(start, end);
+                    break;
+                case "Two Tone":
+                    int cut;
+                    int.TryParse(usrCut.Text, out cut);
+                    filter = new TwoTone(start, end, cut);
+                    break;
+                case "Stripes":
+                    filter = new Stripes();
+                    break;
             }
 
             if (filter != null)
             {
                 App.main.filters.AddLast(filter);
+                if (filter2 != null)
+                {
+                    App.main.filters.AddLast(filter2);
+                }
                 currentFilterString += filter.toString()+" | ";
             }
 
@@ -129,6 +188,7 @@ namespace PicturePickle
 
         private void back_Clicked(object sender, EventArgs e)
         {
+            currentFilterString = "";
             Navigation.PopModalAsync();
         }
     }

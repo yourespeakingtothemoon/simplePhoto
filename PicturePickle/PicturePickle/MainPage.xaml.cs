@@ -28,8 +28,9 @@ namespace PicturePickle
         SKBitmap gSKB;
         public LinkedList<Filter> filters = new LinkedList<Filter>();
         int pickleCount = 0;
-      
-     //Friend
+        Custom page = new Custom();
+
+        //Friend
         /*Add gAdd = new Add(new Color(105, 165, 126));
         Multiply gMult = new Multiply(new Color(255, 0, 0));
         Grayscale gGray = new Grayscale();
@@ -164,9 +165,12 @@ namespace PicturePickle
                     /*filters.AddLast(new ValueAdj(.75f));
                     filters.AddLast(new Grayscale());*/
                     //filters.AddLast(new Interpolate(new Color(255, 50, 0), new Color(0, 50, 255)));
-                    filters.AddLast(new LinearGradient(new Color(0, 50, 255),new Color(255, 50, 0)));
-                    filters.AddLast(new Lightness(3f));
-                    filters.AddLast(new LinearGradient(new Color(0, 50, 255),new Color(255, 50, 0),false));
+
+                    /*   filters.AddLast(new LinearGradient(new Color(0, 50, 255),new Color(255, 50, 0)));
+                       filters.AddLast(new Lightness(3f));
+                       filters.AddLast(new LinearGradient(new Color(0, 50, 255),new Color(255, 50, 0),false));*/
+
+                    filters.AddLast(new Stripes());
                     break;
                 case "Overblow":
                     filters.AddLast(new Bloom(90));
@@ -259,7 +263,7 @@ namespace PicturePickle
                     filters.AddLast(new ValueAdj(0.8f));
                     break;
                 case "Custom":
-                    Custom page = new Custom();  
+                 
                     Navigation.PushModalAsync(page);
                     break;
             }

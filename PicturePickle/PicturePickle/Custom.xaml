@@ -19,6 +19,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <Label BackgroundColor="{StaticResource Main}" Padding="24" Grid.Row="0" Text="Welcome to Picture Pickle!" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="22"/>
@@ -27,29 +29,88 @@
                 <Label x:Name="filterLbl" HorizontalOptions="Center" VerticalOptions="Center" Text="Start adding together different effects and click 'apply filters' to go back to the main screen and apply each effect!"/>
             </ContentView>
 
-
             <Grid Grid.Row="3">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                
                 </Grid.ColumnDefinitions>
                 <!-- Row 1 color entry-->
-                <Entry x:Name="usrR" Placeholder="Red (0-255)" Grid.Column="0" />
-                <Entry x:Name="usrG" Placeholder="Green (0-255)" Grid.Column="1" />
+                    <Entry x:Name="usrR" Placeholder="Red (0-255)" Grid.Column="0" />
+                    <Entry x:Name="usrG" Placeholder="Green (0-255)" Grid.Column="1" />
                 <Entry x:Name="usrB" Placeholder="Blue (0-255)" Grid.Column="2" />
-                <Entry x:Name="usrA" Placeholder="Alpha Value (0-255)"  Grid.Column="3" />
+                <!-- Row2 Color Entry 2 electric boog-->
+                
+                </Grid>
+            <Grid Grid.Row="4">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
 
-                <!-- Row 2 Add, Multiply. Substract, Divide-->
-                <Button x:Name="plus" Text="Add" Grid.Column="4" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
-                <Button x:Name="minus" Text="Subtract"  Grid.Column="5"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
-                <Button x:Name="multiply" Text="Multiply" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
-                <Button x:Name="divide" Text="Divide" Grid.Column="7"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                </Grid.ColumnDefinitions>
+              
+                <Entry x:Name="usrR2" Placeholder="Second Red (0-255)" Grid.Column="0" />
+                <Entry x:Name="usrG2" Placeholder="Second Green (0-255)" Grid.Column="1" />
+                <Entry x:Name="usrB2" Placeholder="Second Blue (0-255)" Grid.Column="2" />
+            
+
+            </Grid>
+
+            <Grid Grid.Row="5">
+                <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+               
+                </Grid.ColumnDefinitions>
+
+             
+                <!-- Row 3 Add, Multiply. Substract, Divide,Gradient, Interp, TwoTone-->
+                <Button x:Name="plus" Text="Add" Grid.Column="0" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="minus" Text="Subtract"  Grid.Column="1"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="multiply" Text="Multiply" Grid.Column="2"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="divide" Text="Divide" Grid.Column="3"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Picker x:Name="directionSel" Grid.Column="4">
+                    <Picker.Items>
+                        <x:String>
+                            →
+                        </x:String>
+                        <x:String>
+                            ←
+                        </x:String>
+                        <x:String>
+                            ↑
+                        </x:String>
+                        <x:String>
+                            ↓
+                        </x:String>
+                        <x:String>
+                            ↘
+                        </x:String>
+                        <x:String>
+                            ↖
+                        </x:String>
+                        <x:String>
+                            ↗
+                        </x:String>
+                        <x:String>
+                            ↙
+                        </x:String>
+
+                    </Picker.Items>
+                </Picker>
+                <Button x:Name="gradient" Text="Gradient" Grid.Column="5"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="interp" Text="Interpolate" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Entry x:Name="usrCut" Placeholder="Cutoff (0-255)" Grid.Column="7"/>
+                <Button x:Name="twoTone" Text="Two Tone" Grid.Column="8"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
                <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
                 <Entry x:Name="G" Placeholder="" Grid.Row="0" Grid.Column="1" />
@@ -58,7 +119,7 @@
                 <!-- Grid is the new Table (Coming to Netflix)-->
             </Grid>
             
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="6">
                 <Grid.ColumnDefinitions >
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -69,13 +130,13 @@
                     <ColumnDefinition Width="*" />
                  
                 </Grid.ColumnDefinitions>
-                <!-- Row 1 color entry-->
+                <!-- Para select-->
                 <Entry x:Name="usrBA" Placeholder="Blur Amount" Grid.Column="0" />
                 <Entry x:Name="usrBT" Placeholder="Blur Times" Grid.Column="1" />
                 <Entry x:Name="usrK" Placeholder="Kernal Size" Grid.Column="3" />
                 <Entry x:Name="usrT" Placeholder="Bloom Threshold"  Grid.Column="5" />
 
-                <!-- Row 2 Add, Multiply. Substract, Divide-->
+                <!-- Blur Bloom Kuwahara-->
                 <Button x:Name="blur" Text="Blur" Grid.Column="2" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="kuwa" Text="Kuwahara"  Grid.Column="4"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="bloom" Text="Bloom" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
@@ -87,8 +148,9 @@
                 <Entry x:Name="A" Placeholder="Alpha Value (0-255)" Grid.Row="0" Grid.Column="3" />-->
                 <!-- Grid is the new Table (Coming to Netflix)-->
             </Grid>
-            <Grid Grid.Row="5">
+            <Grid Grid.Row="7">
                 <Grid.ColumnDefinitions >
+                    <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
@@ -98,16 +160,17 @@
                  
 
                 </Grid.ColumnDefinitions>
-                <!-- Row 1 color entry-->
+                <!-- Value lightness-->
                 <Entry x:Name="usrV" Placeholder="Value Adj (decimal -1-1)" Grid.Column="0" />
                 <Entry x:Name="usrL" Placeholder="Lightness Adj (decimal -1-1)" Grid.Column="2" />
             
 
-                <!-- Row 2 Add, Multiply. Substract, Divide-->
+                <!-- value light gray etc.-->
                 <Button x:Name="value" Text="Adjust Value" Grid.Column="1" BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="light" Text="Adjust Lightness"  Grid.Column="3"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="grayscale" Text="Make Grayscale" Grid.Column="4"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="invert" Text="Invert Color" Grid.Column="5"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
+                <Button x:Name="stripes" Text="Stripes" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
 
                 <!-- Row 3 Blur Amount, Blur Times, Bloom Threshold, Kuro Kernel Size Entry Boxes-->
                 <!-- <Entry x:Name="R" Placeholder="Blur Amount" Grid.Row="0" Grid.Column="0" />
@@ -116,7 +179,7 @@
                 <Entry x:Name="A" Placeholder="Alpha Value (0-255)" Grid.Row="0" Grid.Column="3" />-->
                 <!-- Grid is the new Table (Coming to Netflix)-->
             </Grid>
-            <Grid Grid.Row="6">
+            <Grid Grid.Row="8">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*"/>
                     <ColumnDefinition Width="60*"/>

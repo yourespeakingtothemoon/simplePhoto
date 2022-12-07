@@ -35,7 +35,7 @@ namespace PicturePickle
 
         public override string toString()
         {
-            return "Interpolate between two different colors.";
+            return "Interpolates between "+ "[Red: " + col1.r + " Green: " + col1.g + " Blue: " + col1.b + "]"+" and "+ "[Red: " + col2.r + " Green: " + col2.g + " Blue: " + col2.b + "]";
         }
     }
 }
