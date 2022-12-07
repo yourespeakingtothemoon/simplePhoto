@@ -161,8 +161,8 @@ namespace PicturePickle
 
 
                     break;
-                case "Lune":
-                    /*filters.AddLast(new ValueAdj(.75f));
+                case "Clair De Lune":
+                    filters.AddLast(new ValueAdj(.75f));
                     filters.AddLast(new Grayscale());*/
                     //filters.AddLast(new Interpolate(new Color(255, 50, 0), new Color(0, 50, 255)));
 
@@ -170,7 +170,7 @@ namespace PicturePickle
                        filters.AddLast(new Lightness(3f));
                        filters.AddLast(new LinearGradient(new Color(0, 50, 255),new Color(255, 50, 0),false));*/
 
-                    filters.AddLast(new Stripes());
+                   // filters.AddLast(new Stripes());
                     break;
                 case "Overblow":
                     filters.AddLast(new Bloom(90));
