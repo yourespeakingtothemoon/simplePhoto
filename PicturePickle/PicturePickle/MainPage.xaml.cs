@@ -22,6 +22,7 @@ namespace PicturePickle
         {
             InitializeComponent();
             this.BindingContext = this;
+            filterMenu.SelectedIndex = 5;
         }
         // global things
         byte[] bytes;

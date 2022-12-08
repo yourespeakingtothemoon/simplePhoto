@@ -25,7 +25,7 @@
             <Image x:Name="imageView"  />
         </ContentView>
 
-        <Picker x:Name="filterMenu" Grid.Row="2" SelectedIndexChanged="filterMenu_SelectedIndexChanged">
+        <Picker x:Name="filterMenu" Grid.Row="2" SelectedIndexChanged="filterMenu_SelectedIndexChanged" SelectedIndex="14" >
             <Picker.Items>
                 <x:String>
                     Pickle
