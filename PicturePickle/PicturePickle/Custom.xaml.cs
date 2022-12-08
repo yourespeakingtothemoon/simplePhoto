@@ -162,7 +162,7 @@ namespace PicturePickle
                 App.main.filters.AddLast(filter);
                 if (filter2 != null)
                 {
-                    //App.main.filters.AddLast(filter3);
+                    App.main.filters.AddLast(filter3);
                     App.main.filters.AddLast(filter2);
                    
                 }
