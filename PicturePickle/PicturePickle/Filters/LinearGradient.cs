@@ -10,7 +10,7 @@ namespace PicturePickle
         private Color endColor;
         private float addR, addG, addB=0;
         bool vertical;
-        public LinearGradient(Color col,Color end, bool vertical=true)
+        public LinearGradient(Color col,Color end, bool vertical=false)
         {
             color = col;
             endColor = end;
