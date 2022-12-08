@@ -12,8 +12,8 @@ namespace PicturePickle
 
         public Interpolate(Color col1, Color col2)
         {
-            this.col1 = col1;
-            this.col2 = col2;
+            this.col1 = new Color(col1);
+            this.col2 = new Color(col2);
         }
 
         public override void execute(ref SKBitmap image)

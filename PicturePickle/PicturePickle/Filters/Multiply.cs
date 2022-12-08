@@ -9,7 +9,7 @@ namespace PicturePickle
     {
         public Multiply(Color col)
         {
-            color = col;
+            color = new Color(col);
         }
 
         public override void execute(ref SKBitmap image)

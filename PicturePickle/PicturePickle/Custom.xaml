@@ -92,7 +92,7 @@
                         <x:String>
                             ↓
                         </x:String>
-                      <!--  <x:String>
+                        <x:String>
                             ↘
                         </x:String>
                         <x:String>
@@ -103,7 +103,7 @@
                         </x:String>
                         <x:String>
                             ↙
-                        </x:String>-->
+                        </x:String>
                     </Picker.Items>
                     <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>

@@ -12,9 +12,9 @@ namespace PicturePickle
         private int cutoff;
 
         public TwoTone(Color col1, Color col2, int cuttoff)
-        { 
-            this.col1 = col1;
-            this.col2 = col2;
+        {
+            this.col1 = new Color(col1);
+            this.col2 = new Color(col2);
             this.cutoff = cuttoff;
         }
 

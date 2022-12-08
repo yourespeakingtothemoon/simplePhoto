@@ -12,7 +12,7 @@ namespace PicturePickle
         bool vertical;
         public LinearGradient(Color col,Color end, bool vertical=false)
         {
-            color = col;
+            color = new Color(col);
             endColor = end;
             this.vertical = vertical;
 
@@ -33,7 +33,7 @@ namespace PicturePickle
                         Color pixelColor = new Color(image.GetPixel(x, y));
                         pixelColor.Multiply(ref color); // using the colors in 0-1 space we can multiply them together to combine them
                         image.SetPixel(x, y, pixelColor.ToSKColor(false));
-                        // color.zR += addR / (float)image.Height;
+                        //color.zR += addR / (float)image.Height;
                         //color.zG += addG / (float)image.Height;
                         //color.zB += addB / (float)image.Height;
                     }
