@@ -33,7 +33,8 @@ namespace PicturePickle
             
             Color colorVal;
             Filter filter=null;
-        
+            //Filter filter2 = null;
+            //Filter filter3 = null;
             Button btn = sender as Button;
             int red1, green1, blue1, red2, green2, blue2 = 255;
             int.TryParse(usrR.Text, out red1);
@@ -122,8 +123,33 @@ namespace PicturePickle
                             //top to bottom
                             filter = new LinearGradient(start,end,true);
                             break;
-                    
-                      
+                    /*    case 4:
+                            //left to right top to bottom
+                            filter2 = new LinearGradient(start, end);
+                            filter3 = new Lightness(3f);
+                            filter = new LinearGradient(start, end, true);
+                            break;
+                        case 5:
+                            //right to left bottom to top
+                            filter2 = new LinearGradient(end, start);
+                            filter = new LinearGradient(end, start, true);
+                            filter3 = new Lightness(3f);
+                            break;
+                        case 6:
+                            //left to right bottom to top
+                            filter2 = new LinearGradient(start, end);
+                            filter = new LinearGradient(end, start, true);
+                            filter3 = new Lightness(3f);
+                            break;
+                        case 7:
+                            //right to left top to bottom
+                            //filter = new LinearGradient(color, new Color(255, 255, 255));
+                            filter2 = new LinearGradient(end, start);
+                            filter = new LinearGradient(start, end, true);
+                            filter3 = new Lightness(3f);
+                            break;*/
+
+
                     }
                     break;
                 case "Interpolate":
@@ -142,7 +168,12 @@ namespace PicturePickle
             if (filter != null)
             {
                 App.main.filters.AddLast(filter);
-             
+               /* if (filter2 != null)
+                {
+                    App.main.filters.AddLast(filter3);
+                    App.main.filters.AddLast(filter2);
+                   
+                }*/
                 currentFilterString += filter.toString()+" | ";
             }
 

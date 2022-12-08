@@ -78,7 +78,7 @@
                 <Button x:Name="minus" Text="Subtract"  Grid.Column="1"   BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="multiply" Text="Multiply" Grid.Column="2"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="divide" Text="Divide" Grid.Column="3"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
-                <Picker x:Name="directionSel" Grid.Column="4" SelectedIndex="0">
+                <Picker x:Name="directionSel" Grid.Column="4">
                     <Picker.Items>
                         <x:String>
                             →
@@ -92,14 +92,20 @@
                         <x:String>
                             ↓
                         </x:String>
-                        <x:String>
+                      <!--  <x:String>
                             ↘
                         </x:String>
                         <x:String>
                             ↖
                         </x:String>
-
+                        <x:String>
+                            ↗
+                        </x:String>
+                        <x:String>
+                            ↙
+                        </x:String>-->
                     </Picker.Items>
+                    <Picker.SelectedIndex>0</Picker.SelectedIndex>
                 </Picker>
                 <Button x:Name="gradient" Text="Gradient" Grid.Column="5"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
                 <Button x:Name="interp" Text="Interpolate" Grid.Column="6"  BackgroundColor="{StaticResource Accent2}" Clicked="filterAddition"/>
